@@ -1,6 +1,8 @@
 # 無瑕的程式碼 JavaScript
-原作： [https://github.com/ryanmcdermott/clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) 
+原作： [https://github.com/ryanmcdermott/clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
+
 原作者： [https://github.com/ryanmcdermott](https://github.com/ryanmcdermott) 
+
 譯者： [https://github.com/trylovetom](https://github.com/trylovetom) 
 
 ## 目錄（Table of Contents）
