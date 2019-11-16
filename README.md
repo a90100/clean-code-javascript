@@ -1,9 +1,7 @@
 # 無瑕的程式碼 JavaScript
-原作： [https://github.com/ryanmcdermott/clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)
-
-原作者： [https://github.com/ryanmcdermott](https://github.com/ryanmcdermott) 
-
-譯者： [https://github.com/trylovetom](https://github.com/trylovetom) 
+> 原作： [https://github.com/ryanmcdermott/clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript)<br>
+> 原作者： [https://github.com/ryanmcdermott](https://github.com/ryanmcdermott) <br>
+> 譯者： [https://github.com/trylovetom](https://github.com/trylovetom) 
 
 ## 目錄（Table of Contents）
 1. [介紹（Introduction）](#介紹Introduction)
@@ -44,7 +42,7 @@ const yyyymmdstr = moment().format('YYYY/MM/DD');
 const currentDate = moment().format('YYYY/MM/DD');
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 相同類型的變數使用相同的名稱
 **糟糕的：**
@@ -59,7 +57,7 @@ getCustomerRecord();
 getUser();
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用可搜尋的名稱
 使用易於閱讀與搜尋的名稱非常重要，因為我們要閱讀的程式碼遠比自己寫得多。使用沒有意義的名稱，會導致程式碼難以理解，對後續閱讀者是個糟糕的體驗。另外使用以下工具，可以協助你找出未命名的常數：
@@ -80,7 +78,7 @@ const MILLISECONDS_IN_A_DAY = 86400000;
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用可解釋的變數
 **糟糕的：**
@@ -104,7 +102,7 @@ saveCityZipCode(city, zipCode);
 **譯者附註**
 `address.match(cityZipCodeRegex)` 取出了字串中的 city 與 zipCode 並以陣列（Array）的方式輸出。在糟糕的範例中，你不會知道陣列在中，哪個是 city，哪個是 zipCode。在適當的範例中，則清楚地解釋了。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免心理作用（Mental Mapping）
 清晰（Explicit）的表達會比隱藏（Implicit）更好。
@@ -139,7 +137,7 @@ locations.forEach(location => {
 **譯者附註**
 在糟糕的範例中，程式碼的作者認為從 `locations` 取出的都是地址，所以選用縮減後的 `l`  作為名稱。不過這只有作者自己這麼認為，其他人可不一定知道。避免「我認為」、「我以為」、「我覺得」，這樣的心理作用。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免使用不必要的描述（Context）
 如果你的類別與物件名稱是有關聯意義的，就不用在內部變數上再次重複。
@@ -170,7 +168,7 @@ function paintCar(car) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用默認參數（Parameter）代替條件判斷（Conditionals）
 使用默認參數較乾淨，但請注意，當參數為 `undefined` 時才會默認參數作用，其他虛值（Falsy）則反之，像是 `''`、`false`、`null`、`0`、`NaN` 等。
@@ -179,14 +177,14 @@ function paintCar(car) {
 ```javascript
 function createMicrobrewery(name) {
   const breweryName = name || 'Hipster Brew Co.';
-  *// ...*
+  // ...
 }
 ```
 
 **適當的：**
 ```javascript
 function createMicrobrewery(name = 'Hipster Brew Co.') {
-  *// ...*
+  // ...
 }
 ```
 
@@ -195,7 +193,7 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
 
 默認參數非常好用，可以結合工廠模式做出很多應用。另外建議統一使用 `undefined` 代替 `null` 當作空值的回傳值。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 函數（Functions）
 ### 參數（Parameter） (少於 2 個較佳)
@@ -249,7 +247,7 @@ createMenu({
 });
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 一個函數只做一件事情（單一性）
 這是個非常重要的原則，當你的函數做超過一件事情時，他會更難以被撰寫、測試與理解。當你隔離（isolate）你的函數到只做一件事情時，它能更容易地被重構（Refactor）與容易清晰地閱讀。如果嚴格遵守此項原則，將會領先許多開發者。
@@ -278,7 +276,7 @@ function isActiveClient(client) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 函數名稱應該說明它做的內容
 **糟糕的：**
@@ -306,7 +304,7 @@ addMonthToDate(1, date);
 **譯者附註**
 建議以動詞開頭。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 函數應該只做一層抽象（Abstraction）
 當你的函數需要的抽象多餘一層時，代表你的函數做太多事情了。將其分解以利重用與測試。
@@ -376,7 +374,7 @@ function parse(tokens) {
 **譯者附註**
 這個原則與前面提到的「一個函數只做一件事情（單一性）」概念相似。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 移除重複的（Duplicate）程式碼
 絕對避免重複的程式碼，重複的程式碼代表者你更動你的邏輯時，需要同時修改多處。
@@ -449,7 +447,7 @@ function showEmployeeList(employees) {
 **譯者附註**
 剛讀完這個原則時，我非常遵守，但是個人龜毛的個性，造成了不少麻煩，我會在開發時不斷的思考是否會出現了重複的程式碼，甚至考慮到了之後的重用性。代價就是過度設計（Over Engineering），造成功能開發窒礙難行。最後總結了一個建議作為附加原則：一開始撰寫程式碼先以功能開發優先，當你發現有兩個以上的地方重複時，再來考慮要不要重構。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用 `Object.assign` 設定 `Object` 的預數值
 
@@ -500,7 +498,7 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要使用旗標（Flag）作為參數
 當你的函數使用了旗標當作參數時，代表你的函數做不只一件事情，依照不同旗標路徑切分你的函數。
@@ -527,7 +525,7 @@ function createTempFile(name) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免副作用（Side Effects）
 當函數作用在除了回傳值外的地方，像是讀寫文件、修改全域變數或是將你的錢從轉帳到其他人，則稱為副作用。
@@ -564,7 +562,7 @@ console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免副作用（Side Effects）第二部分
 在 JavaScript 中，原始資料類型傳遞數值（Value），物件/陣列傳遞參照（Reference）。在本案例中，你的函數改變了購物車清單 `cart` 中的陣列，像是你增加了一個商品，其他使用購物車清單 `cart` 的函數將會被影響。這做法有好有壞，讓我解釋一下問題所在：
@@ -611,7 +609,7 @@ const checkIs18Age = age => {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 別寫全域函數（Global Function）
 在 JavaScript 中弄髒全域是個不好的做法，因為你可能會影響到其他函數庫或是 API。舉個例子，如果妳想要在 JavaScript 的原生陣列方法，擴展  `diff` 方法，用 B 陣列來去除 A 陣列中的元素（Element）。常見做法你可能會在  `Array.prototype` 中增加一個全新的函數，如果其他函數庫也有自己的 `diff` 實現的話將會互相影響。這就是為什麼我們使用 ES2015/ES6 的類別，來輕鬆的擴展的原因。
@@ -634,7 +632,7 @@ class SuperArray extends Array {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 偏好使用函數式程式（Functional Programming）設計代替命令式程式設計（Imperative Programming）
 JavaScript 不是像 Haskell 一樣的函數式語言，但它具有類似特性。函數式程式設計更加乾淨且容易被測試。當你在寫程式時，盡量選擇此設計方式。
@@ -694,7 +692,7 @@ const totalOutput = programmerOutput.reduce(
 );
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 封裝狀態（Encapsulate Conditionals）
 
@@ -716,7 +714,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免負面狀態（Negative Conditionals）
 
@@ -742,7 +740,7 @@ if (isDOMNodePresent(node)) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免狀態
 當你第一次聽到時，這聽起來是不可能的任務。大部分的人會說：「怎麼可能不使用 `if` 語法？」事實上你可以使用多態性（Polymorphism） 達到相同的效果。第二個問題來了，「為什麼我們需要這樣做呢？」依據前面概念，為了保持程式碼的乾淨，當你的類別或是函數出現 `if` 語法，代表你的函數做了超過一件事情。記住，一個函數只做一件事情！
@@ -792,7 +790,7 @@ class Cessna extends Airplane {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免型別（Type）檢查第一部分
 JavaScript 弱型別語言，代表你的函數應能處理任何型別的引數（argument）。有時這會帶給你一些麻煩，讓你需要做型別檢查。這有很多方法可以避免次問題發生，第一步就是統一所有的 API。
@@ -818,7 +816,7 @@ function travelToTexas(vehicle) {
 **譯者附註**
 此範例統一了所有的車輛移動的參數、方法與實作，所以不再需要區分不同的類別的車輛呼叫不同的方法。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免型別檢查第二部分
 假設你需要型別檢查原始數值，像是字串與整數且你無法使用多態性處理，考慮使用 TypeScript 吧。他是提供標準 JavaScript 靜態類型的的最佳選擇。手動型別檢查需要很多額外處理，你得到的是虛假的型別安全，且失去的可讀性。保持你的 JavaScript 程式碼的整潔、寫好測試與足夠的 Code Review。如果再加上使用 TypeScript 會是更好的選擇。
@@ -844,7 +842,7 @@ function combine(val1, val2) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 別過度優化
 現代瀏覽器在運行時幫你做了很多優化。大多數的情況，你自行優化是浪費時間的。這裏有些很好的[資源](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)，去了解哪些優化是無用的。
@@ -868,7 +866,7 @@ for (let i = 0; i < list.length; i++) {
 **譯者附註**
 簡單來說，你不用在意程式語言層面上優化，因為這部分會因為版本更新而得到優化。但不要因此放棄所有的優化，演算法方面的你還是要注意！
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 移除無用的程式碼（Dead Code）
 沒有任何理由保留無用的程式碼，如果他們沒有被使用到，移除它！讓它們被保留在版本歷史中。
@@ -897,7 +895,7 @@ const req = newRequestModule;
 inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 物件（Object）與資料結構（Data Structure）
 ### 使用 getters 與 setters
@@ -951,7 +949,7 @@ const account = makeBankAccount();
 account.setBalance(100);
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 讓物件擁有私有成員（members）
 可以透過閉包（closures）來私有化參數（ES5 以下）。
@@ -989,7 +987,7 @@ delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 類別（Classes）
 ### 類別語法偏好使用 ES2016/ES6 的類別更甚於 ES5 函數
@@ -1069,7 +1067,7 @@ class Human extends Mammal {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用方法鏈（method chaining）
 這個模式（pattern）在 JavaScript 中非常有用，你可以在很多函式庫中看到，像是 jQuery 與 Lodash。它可以讓你的程式碼表達的更好。
@@ -1144,7 +1142,7 @@ class Car {
 const car = new Car('Ford', 'F-150', 'red').setColor('pink').save();
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 偏好組合（composition）更甚於繼承（inheritance）
 正如四人幫的 [設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，如果可以，你應該優先使用組合而不是繼承。有許多好理由去使用繼承，也有許多好理由去使用組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。
@@ -1203,7 +1201,7 @@ class Employee {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## SOLID 原則
 ### 單一功能原則 Single Responsibility Principle (SRP)
@@ -1254,7 +1252,7 @@ class UserSettings {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 開閉原則 Open/Closed Principle (OCP)
 Bertrand Meyer 說過，「軟體實體（別別、模組、函數）應為開放擴展，但是關閉修改」。這原則基本上說明你應該同意使用者增加功能，而不用修改現有程式碼。
@@ -1339,7 +1337,7 @@ class HttpRequester {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 里氏替換原則 Liskov Substitution Principle (LSP)
 這是一個驚人但簡單的概念，正式的定義為：「假如類別 S 是類別 T 的子類別，那麼類別 T 的物件（Object）可以被替換成類別 S 的物件（例如，類別 S 的物件可作為類別 T 的物件的替代品），而不需要改變任何程式的理想屬性（正確性、被執行的任務等）。
@@ -1446,7 +1444,7 @@ const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
 renderLargeShapes(shapes);
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 介面隔離原則 Interface Segregation Principle (ISP)
 JavaScript 沒有接口（interfaces），所以這個原則比較不像其他語言一樣嚴格。不過它在 JavaScript  這種缺少類型的語言來說一樣重要。
@@ -1513,7 +1511,7 @@ const $ = new DOMTraverser({
 });
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 依賴反轉原則 Dependency Inversion Principle (DIP)
 這原則說明兩個必要事情：
@@ -1599,7 +1597,7 @@ const inventoryTracker = new InventoryTracker(
 inventoryTracker.requestItems();
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ##  測試（Testing）
 測試比發布更加重要。如果你沒有測試或是不夠充分。當你發布時，你無法確認是否沒有破壞任何事情。測試的量，由你的團隊決定，但是擁有 100% 的測試覆蓋率（包含狀態與分支），是你為什麼能高度自信與內心平靜的原因。所以你需要一個偉大的測試框架，也需要一個[好的覆蓋率工具](http://gotwarlost.github.io/istanbul/)。
@@ -1656,7 +1654,7 @@ describe('MakeMomentJSGreatAgain', () => {
 });
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 併發（Concurrency）
 
@@ -1704,7 +1702,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
   });
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### Async/Await 比 Promises 更加簡潔
 Promises 是回調的一種非常簡潔的替代品，但是 ES2017/ES8 帶來了 async 與 await，提供了一個更簡潔的方案。你需要的只是一個前綴為 `async` 關鍵字的函數，接下來你編寫邏輯時就不需要使用 `then` 函數鍊。如果你能使用 ES2017/ES8 的進階功能的話，今天就使用它吧！
@@ -1744,7 +1742,7 @@ async function getCleanCodeArticle() {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 錯誤處理（Error Handling）
 拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行當前當前堆疊（stack）上的執行函數，結束當前進程（process 在 Node.js），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
@@ -1807,7 +1805,7 @@ getdata()
   });
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 格式化（Formatting）
 格式化是主觀的，就像其他規則一樣，沒有必要硬性規定。重點是沒有必要為了格式而去爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選擇一個就可以！因為作為工程師去爭論格式，就是在浪費時間與金錢。
@@ -1847,7 +1845,7 @@ class Animal {}
 class Alpaca {}
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 函數的調用者應該與被調用者靠近
 如果一個函數調用另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，調用函數應於調被用函數的正上方。我們傾向於從上到下的閱讀方式，就是看報紙一樣。基於這個原因，保持你的程式碼可以依照這種方式閱讀。
@@ -1930,7 +1928,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 註解（Comments）
 ### 只對包含複雜業務邏輯的東西，撰寫註解
@@ -1974,7 +1972,7 @@ function hashIt(data) {
 }
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要在程式碼中保留被註解掉的程式碼
 因為有版本控制，舊的程式碼流程歷史紀錄中即可。
@@ -1992,7 +1990,7 @@ doStuff();
 doStuff();
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要留有日誌式的註解
 記住，使用版本控制！不需要無用的程式碼、註解掉得程式碼，尤其是日誌式的註解。使用 `git log` 來保存歷史紀錄。
@@ -2020,7 +2018,7 @@ function combine(a, b) {
 **譯者附註**
 在註解中寫歷史紀錄並沒有在版本控制中來得有效，另外補充有關歷史紀錄如何撰寫的規範（[如何撰寫 Git Commet Message](https://chris.beams.io/posts/git-commit/)）。
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免位置標示
 它們只會增加干擾。讓函數與變數的名稱沿著合適的縮排與格式化，為你的程式碼帶來良好的視覺結構。
@@ -2055,7 +2053,7 @@ const actions = function() {
 };
 ```
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 翻譯
 以下為可用的語言翻譯。
@@ -2082,5 +2080,5 @@ const actions = function() {
 - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
-**[⬆ 回到目錄](#table-of-contents)**
+**[⬆ 回到目錄](#目錄table-of-contents)**
 
