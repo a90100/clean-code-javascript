@@ -18,7 +18,7 @@
 12. [翻譯（Translation）](#翻譯Translation)
 
 ## 介紹（Introduction）
-![透過計算閱讀程式碼時的咒罵次數，來評估軟體品質](http://www.osnews.com/images/comics/wtfm.jpg)
+![透過計算閱讀程式碼時的咒罵次數，來評估軟體品質](http://www.osnews.com/images/comics/wtfm.jpg)<br>透過計算閱讀程式碼時的咒罵次數，來評估軟體品質<br><br>
 文章作者根據 Robert C. Martin 的[《無暇的程式碼》](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)，撰寫一份適用於 JavaScript 的原則。本文不是風格指南（Style Guide），而是教導你撰寫出[可閱讀、可重複使用與可重構](https://github.com/ryanmcdermott/3rs-of-software-architecture)的 JS 程式碼。
 
 注意！你不必嚴格遵守每一項原則，有些甚至不被大眾所認同。雖然這只是份指南，卻是來自《無暇的程式碼》作者的多年結晶。
@@ -28,7 +28,9 @@
 還有一件事情：知道這些原則，並不會立刻讓你成為出色的開發者，長期奉行它們，不代表你能高枕無憂不再犯錯。但是，千里之行，始於足下，時常與志同道合們進行討論（Code Review），改善不完備之處。不要因為自己寫出來的程式碼很糟糕而害怕分享，而是要畏懼自己居然寫出了這樣的程式碼！
 
 **譯者序**
-《無暇的程式碼》是一本好書，是不可否認這個事實。我熱愛著 JS，當找到這份 JS 版本的後，我無比開心立刻著手翻譯，因此有了這份《無暇的程式碼 JavaScript》。對於*Clean Code*的書名採用博碩文化的翻譯，也是對原版譯者的尊敬。本翻譯中會穿插一些我對文章中註解，也請讀者原諒我的叨擾。另外專業術語的翻譯有可能會有出入，我會標示出英文原文，避免讀者誤解。如有翻譯或是理解上的錯誤，煩請聯絡我，謝謝。（聯絡方式在上方，我的 GitHub 中。）
+> 獻給傲嬌文創的所有工程師。
+
+《無暇的程式碼》是一本好書，是不可否認這個事實。我熱愛著 JS，當找到這份 JS 版本的後，我無比開心立刻著手翻譯，因此有了這份《無暇的程式碼 JavaScript》。對於 *Clean Code* 的書名採用博碩文化的翻譯，也是對原版譯者的尊敬。本翻譯中會穿插一些我對文章中註解，也請讀者原諒我的叨擾。另外專業術語的翻譯有可能會有出入，我會標示出英文原文，避免讀者誤解。如有翻譯或是理解上的錯誤，煩請聯絡我，謝謝。（聯絡方式在上方，我的 GitHub 中。）
 
 ## 變數（Variables）
 ### 使用具有意義且可閱讀的名稱
@@ -61,8 +63,8 @@ getUser();
 
 ### 使用可搜尋的名稱
 使用易於閱讀與搜尋的名稱非常重要，因為我們要閱讀的程式碼遠比自己寫得多。使用沒有意義的名稱，會導致程式碼難以理解，對後續閱讀者是個糟糕的體驗。另外使用以下工具，可以協助你找出未命名的常數：
-	* [buddy.js](https://github.com/danielstjules/buddy.js)
-	* [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md)
+  * [buddy.js](https://github.com/danielstjules/buddy.js)
+  * [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md)
 
 **糟糕的：**
 ```javascript
@@ -100,7 +102,7 @@ saveCityZipCode(city, zipCode);
 ```
 
 **譯者附註**
-`address.match(cityZipCodeRegex)` 取出了字串中的 city 與 zipCode 並以陣列（Array）的方式輸出。在糟糕的範例中，你不會知道陣列在中，哪個是 city，哪個是 zipCode。在適當的範例中，則清楚地解釋了。
+`address.match(cityZipCodeRegex)` 取出了字串中的 city 與 zipCode 並以陣列（Array）的方式輸出。在糟糕的範例中，你不會知道哪個是 city，哪個是 zipCode。在適當的範例中，則清楚地解釋了。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
@@ -135,6 +137,7 @@ locations.forEach(location => {
 ```
 
 **譯者附註**
+
 在糟糕的範例中，程式碼的作者認為從 `locations` 取出的都是地址，所以選用縮減後的 `l`  作為名稱。不過這只有作者自己這麼認為，其他人可不一定知道。避免「我認為」、「我以為」、「我覺得」，這樣的心理作用。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
@@ -171,7 +174,7 @@ function paintCar(car) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用默認參數（Parameter）代替條件判斷（Conditionals）
-使用默認參數較乾淨，但請注意，當參數為 `undefined` 時才會默認參數作用，其他虛值（Falsy）則反之，像是 `''`、`false`、`null`、`0`、`NaN` 等。
+使用默認參數較整潔，但請注意，當參數為 `undefined` 時才會作用，其他種類的虛值（Falsy）不會，像是 `''`、`false`、`null`、`0`、`NaN` 等。
 
 **糟糕的：**
 ```javascript
@@ -189,22 +192,23 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
 ```
 
 **譯者附註**
-此處原文為 **Arguments**，但是函數的參數定義應該為 **Parameter**，而調用函數時傳遞的引數才是 **Arguments**。
 
 默認參數非常好用，可以結合工廠模式做出很多應用。另外建議統一使用 `undefined` 代替 `null` 當作空值的回傳值。
+
+此處原文為 **Arguments**，但是函數的參數定義應該為 **Parameter**，而調用函數時傳遞的引數才是 **Arguments**。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 函數（Functions）
 ### 參數（Parameter） (少於 2 個較佳)
-限制函數的參數數量非常重要，因為能讓你更容易的測試。過多的參數代表著過多的組合，會導致你不得不編寫出大量的測試。
+限制函數的參數數量非常重要，因為能讓你更容易地測試。過多的參數代表著過多的組合，會導致你不得不編寫出大量測試。
 
-一個至二個參數是最理想的，盡可能避免大於三個以上。如果你有超過兩個以上的參數，代表你的函數做太多事情。如果無法避免時，可以有效地使用物件替代大量的參數。
+一個至二個是最理想的，盡可能避免大於三個以上。如果你有超過兩個以上的參數，代表你的函數做太多事情。如果無法避免時，可以有效地使用物件替代大量的參數。
 
-為了讓你可以清晰地表達，函數預期使用哪些物件的屬性（Properties），可以使用 ES2015/ES6 提供的解構（Destructuring）語法。以下條列使用解構與罰的優點：
-	1. 函數需要物件的哪些屬性，可以像參數一樣清晰地表達。
-	2. 解構語法會複製來自物件的原始型態（Primitive），這能幫助你避免邊際效應（Side Effect）。巢狀物件與陣列，並不會被解構語法複製。
-	3. 使用解構語法能讓物件屬性被程式碼檢查器（Linter）作用，提醒你哪些屬性未被使用到。
+為了讓你可以清晰地表達，預期使用哪些物件的屬性（Properties），可以使用 ES2015/ES6 提供的解構（Destructuring）語法。使用這種語法有以下優點：
+  1. 函數需要物件的哪些屬性，可以像參數一樣清晰地表達。
+  2. 解構語法會複製來自物件的原始型態（Primitive），這能幫助你避免邊際效應（Side Effect）。注意！巢狀物件與陣列，並不會被解構語法複製。
+  3. 使用解構語法能讓物件屬性被程式碼檢查器（Linter）作用，提醒你哪些屬性未被使用到。
 
 **糟糕的：**
 ```javascript
@@ -228,6 +232,7 @@ createMenu({
 ```
 
 **譯者附註**
+
 這種方法非常適合用於工廠模式，結合上一章的默認參數，譯者推薦的使用方式如下：
 ```javascript
 function createMenu({
@@ -250,7 +255,7 @@ createMenu({
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 一個函數只做一件事情（單一性）
-這是個非常重要的原則，當你的函數做超過一件事情時，他會更難以被撰寫、測試與理解。當你隔離（isolate）你的函數到只做一件事情時，它能更容易地被重構（Refactor）與容易清晰地閱讀。如果嚴格遵守此項原則，將會領先許多開發者。
+這是個非常重要的原則，當你的函數做超過一件事情時，它會更難以被撰寫、測試與理解。當你隔離（isolate）你的函數到只做一件事情時，它能更容易地被重構（Refactor）與清晰地閱讀。如果嚴格遵守此項原則，你將會領先許多開發者。
 
 **糟糕的：**
 ```javascript
@@ -302,7 +307,8 @@ addMonthToDate(1, date);
 ```
 
 **譯者附註**
-建議以動詞開頭。
+
+建議函數命名以動詞開頭，像是 `doSomething()`、`setupUserProfile()`。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
@@ -313,24 +319,24 @@ addMonthToDate(1, date);
 ```javascript
 function parseBetterJSAlternative(code) {
   const REGEXES = [
-    *// ...*
+    // ...
   ];
 
   const statements = code.split(' ');
   const tokens = [];
   REGEXES.forEach(REGEX => {
     statements.forEach(statement => {
-      *// ...*
+      // ...
     });
   });
 
   const ast = [];
   tokens.forEach(token => {
-    *// lex...*
+    // lex...
   });
 
   ast.forEach(node => {
-    *// parse...*
+    // parse...
   });
 }
 ```
@@ -372,18 +378,19 @@ function parse(tokens) {
 ```
 
 **譯者附註**
+
 這個原則與前面提到的「一個函數只做一件事情（單一性）」概念相似。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 移除重複的（Duplicate）程式碼
-絕對避免重複的程式碼，重複的程式碼代表者你更動你的邏輯時，需要同時修改多處。
+絕對避免重複的程式碼，重複的程式碼代表者更動邏輯時，需要同時修改多處。
 
-想像一下你經營著一家餐廳，你需要持續追蹤你的存貨：所有的番茄、洋蔥、大蒜與各種香料等。如果你有多份紀錄表，當你使用蕃茄做完一道料理，需要更新多份記錄表，你可能會忘記更新其中一份。如果你只有一份記錄表，則不會問題！
+想像一下你經營著一家餐廳，需要持續追蹤存貨：番茄、洋蔥、大蒜與各種香料等。如果你有多份紀錄表，當使用蕃茄做完一道料理時，需要更新多份記錄表，可能會忘記更新其中一份。如果你只有一份記錄表，就不會有此問題！
 
-通常你有重複的程式碼，是因為你有兩個稍微不同的東西。它們之間絕大部分相同，但些微不同之處，迫使你使用多個函數處理相似的事情。如果出現重複的程式碼，它意味著你可以使用函數、模組或是類別來抽象化處理。
+通常重複的程式碼，是因為有兩個稍微不同的東西。它們之間絕大部分相同，但些微不同之處，迫使你使用多個函數處理相似的事情。如果出現重複的程式碼，可以使用函數、模組或是類別來抽象化處理。
 
-正確的抽象化是非常關鍵的，這也是為什麼你應該遵循類[類別（Classes）](#類別（Classes）)章節中，物件導向基本原則（SOLID）的原因。請小心，較差的抽象化會比重複的程式碼更糟！這麼說吧，如果你有把握做出好的抽象化，盡情放手去做。別讓你自己出現重複的地方，不然你會需要修改更多的程式碼。
+正確的抽象化是非常關鍵的，這也是為什麼你應該遵循[類別（Classes）](#類別Classes)章節中，物件導向基本原則 SOLID 的原因。請小心，較差的抽象化會比重複的程式碼更糟！這麼說吧，如果你有把握做出好的抽象化，盡情放手去做。別讓程式碼出現重複的地方，不然你會需要修改更多的程式碼。
 
 **糟糕的：**
 ```javascript
@@ -445,7 +452,8 @@ function showEmployeeList(employees) {
 ```
 
 **譯者附註**
-剛讀完這個原則時，我非常遵守，但是個人龜毛的個性，造成了不少麻煩，我會在開發時不斷的思考是否會出現了重複的程式碼，甚至考慮到了之後的重用性。代價就是過度設計（Over Engineering），造成功能開發窒礙難行。最後總結了一個建議作為附加原則：一開始撰寫程式碼先以功能開發優先，當你發現有兩個以上的地方重複時，再來考慮要不要重構。
+
+剛讀完這個原則時，我非常遵守，但是個人龜毛的個性，造成了不少麻煩，我會在開發時不斷的思考是否會出現了重複的程式碼，甚至考慮到了之後的重用性。代價就是過度設計（Over Engineering）造成功能開發窒礙難行，設計了良好架構，但實際上並未被使用到。最後總結了一個建議作為附加原則：一開始撰寫程式碼先以功能開發優先，當你發現有兩個以上的地方重複時，再來考慮要不要重構。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
@@ -501,7 +509,7 @@ createMenu(menuConfig);
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要使用旗標（Flag）作為參數
-當你的函數使用了旗標當作參數時，代表你的函數做不只一件事情，依照不同旗標路徑切分你的函數。
+當你的函數使用了旗標當作參數時，代表函數做不只一件事情，依照不同旗標路徑切分你的函數。
 
 **糟糕的：**
 ```javascript
@@ -528,16 +536,21 @@ function createTempFile(name) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免副作用（Side Effects）
-當函數作用在除了回傳值外的地方，像是讀寫文件、修改全域變數或是將你的錢從轉帳到其他人，則稱為副作用。
+當函數作用在除了回傳值外的地方，像是讀寫文件、修改全域變數或是將你的錢轉帳到其他人帳戶，則稱為副作用。
 
-程式在某些情況下是需要副作用的，像是上面所提到的粒子。這時你應該將這些功能集中在一起，不要同時有多個函數或是類別同時操作資源，應該只用一個服務（Service）完成這些事情。
+程式在某些情況下是需要副作用的，像是上面所提到的例子。這時你應該將這些功能集中在一起，不要同時有多個函數或是類別同時操作資源，應該只用一個服務（Service）完成這些事情。
 
-常見的問題像是：在沒有任何架構下，同時多個物件中分享共有狀態；可變的狀態，且可以被任何人寫入；副作用發生的地方沒有被集中。如果你能避免這些問題，你會比大多數的工程師快樂。
+常見的問題像是：
+  * 在沒有任何架構下，同時多個物件中分享共有狀態。
+  * 可變的狀態，且可以被任何人寫入
+  * 副作用發生的地方沒有被集中。
+
+如果你能避免這些問題，你會比大多數的工程師快樂。
 
 **糟糕的：**
 ```javascript
-// Global variable referenced by following function.
-// If we had another function that used this name, now it'd be an array and it could break it.
+// 全域變數被以下函數使用
+// 假如有其他的函數使用了這個名稱，現在他變成了陣列，將會被破壞而出錯。
 let name = 'Ryan McDermott';
 
 function splitIntoFirstAndLastName() {
@@ -565,11 +578,11 @@ console.log(newName); // ['Ryan', 'McDermott'];
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免副作用（Side Effects）第二部分
-在 JavaScript 中，原始資料類型傳遞數值（Value），物件/陣列傳遞參照（Reference）。在本案例中，你的函數改變了購物車清單 `cart` 中的陣列，像是你增加了一個商品，其他使用購物車清單 `cart` 的函數將會被影響。這做法有好有壞，讓我解釋一下問題所在：
+在 JavaScript 中，原始資料類型傳遞數值（Value），物件/陣列傳遞參照（Reference）。在本案例中，你的函數改變了購物車清單 `cart` 中的陣列，像是你增加了一個商品，其他使用購物車清單的函數將會被影響。這做法有好有壞，讓我解釋一下問題所在：
 
-使用者按下付款按鈕後，將會呼叫 `purchase` 函數，產生一個網路請求傳送 購物車清單 `carts` 陣列到伺服器。因為較差的網路連線，函數 `purchase` 必須多嘗試幾次。此時，使用者不小心又按下加入購物車按鈕，因為是參考的關係，新的請求將會送出使用者不小心加入的商品。
+使用者按下付款按鈕後，將會呼叫 `purchase` 函數，產生一個網路請求傳送購物車清單陣列到伺服器。因為較差的網路連線，必須多嘗試幾次。此時使用者不小心又按下加入購物車按鈕，因為是參考的關係，請求將會送出新加入的商品。
 
-較好的解決辦法是 `addItemToCart` 函數，必須複製新的一份購物車清單 `cart`，修改複製的資料後再回傳。這能確保其他的函數的購物車清單 `cart` 沒有任何機會被被參考所影響。
+較好的解決辦法是 `addItemToCart` 函數，執行前複製新的一份購物車清單，修改複製的資料後再回傳。這能確保其他的函數的購物車清單沒有任何機會被被參考所影響。
 
 使用這方法前，有兩個警告要告知：
 1. 當採用這種做法後，你會發現，需要修改輸入物件的情況非常少。大多數的程式碼可以在沒有副作用的情況下重構！
@@ -591,7 +604,8 @@ const addItemToCart = (cart, item) => {
 ```
 
 **譯者附註**
-譯者這邊另外再提供一個案例，函數 `checkIs18Age` 用來檢查是否成年。第一個寫法中，引用了全域（global）變數 `minimum`，這功能看起來能正常運作沒問題，但是今天如果有其他函數 `setMinAge` 修改了全域變數  `minimum`，函數 `checkIs18Age` 將會因為副作用的關係變的無法預期，甚至失去它的作用。
+
+譯者這邊另外再提供一個案例，函數 `checkIs18Age` 用來檢查是否成年。第一個寫法中，引用了全域（global）變數 `minimum`，這功能看起來能正常運作沒問題，但是今天如果有其他函數 `setMinAge` 修改了全域變數 `minimum`，函數 `checkIs18Age` 將會因為副作用的關係變的無法預期，甚至失去它的作用。
 
 較好的寫法是，採用純函數（pure function），使用一個可預期的變數，來避免副作用影響。
 
@@ -609,10 +623,32 @@ const checkIs18Age = age => {
 }
 ```
 
+另外使用解構的方式複製資料，只會複製第一層而已。
+
+```
+// 巢狀解構只能複製第一層
+const obj1 = { subObj: { message: 'Hey' } }
+const obj2 = { ...obj1 }
+
+obj2.subObj.message = 'Yo'
+console.log(obj1.subObj.message) // 'Yo'
+```
+
+如果要複製巢狀結構，你需要深度複製。可以使用一些函數庫 [loadsh](https://lodash.com/) 的 `_.CloneDeep` 或是 [ramda](https://ramdajs.com/) 的 `clone`。或是使用 `JSON.parse(JSON.stringify(object))` 來實現。不過使用 JSON 的話，會失去 Function 的複製。
+
+```
+// 使用 JSON 來深度複製
+const obj1 = { subObj: { message: 'Hey' } }
+const obj2 = JSON.parse(JSON.stringify(obj1))
+
+obj2.subObj.message = 'Yo'
+console.log(obj1.subObj.message) // 'Hey'
+```
+
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 別寫全域函數（Global Function）
-在 JavaScript 中弄髒全域是個不好的做法，因為你可能會影響到其他函數庫或是 API。舉個例子，如果妳想要在 JavaScript 的原生陣列方法，擴展  `diff` 方法，用 B 陣列來去除 A 陣列中的元素（Element）。常見做法你可能會在  `Array.prototype` 中增加一個全新的函數，如果其他函數庫也有自己的 `diff` 實現的話將會互相影響。這就是為什麼我們使用 ES2015/ES6 的類別，來輕鬆的擴展的原因。
+在 JavaScript 中弄髒全域是個不好的做法，因為你可能會影響到其他函數庫或是 API。舉個例子，如果妳想要在 JavaScript 的原生陣列方法，擴展  `diff` 方法，用 B 陣列來去除 A 陣列中的元素（Element）。常見做法你可能會在  `Array.prototype` 中增加一個全新的函數，如果其他函數庫也有自己的 `diff` 實現的話將會互相影響。這就是為什麼我們需要使用 ES2015/ES6 的類別，來擴展的原因。
 
 **糟糕的：**
 ```javascript
@@ -699,7 +735,7 @@ const totalOutput = programmerOutput.reduce(
 **糟糕的：**
 ```javascript
 if (fsm.state === 'fetching' && isEmpty(listNode)) {
-  *// ...*
+  // ...
 }
 ```
 
@@ -710,7 +746,7 @@ function shouldShowSpinner(fsm, listNode) {
 }
 
 if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
-  *// ...*
+  // ...
 }
 ```
 
@@ -721,11 +757,11 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 **糟糕的：**
 ```javascript
 function isDOMNodeNotPresent(node) {
-  *// ...*
+  // ...
 }
 
 if (!isDOMNodeNotPresent(node)) {
-  *// ...*
+  // ...
 }
 ```
 
@@ -743,12 +779,12 @@ if (isDOMNodePresent(node)) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 避免狀態
-當你第一次聽到時，這聽起來是不可能的任務。大部分的人會說：「怎麼可能不使用 `if` 語法？」事實上你可以使用多態性（Polymorphism） 達到相同的效果。第二個問題來了，「為什麼我們需要這樣做呢？」依據前面概念，為了保持程式碼的乾淨，當你的類別或是函數出現 `if` 語法，代表你的函數做了超過一件事情。記住，一個函數只做一件事情！
+當你第一次聽到時，這聽起來是不可能的任務。大部分的人會說：「怎麼可能不使用 `if` 語法？」事實上你可以使用多態性（Polymorphism） 達到相同的效果。第二個問題來了，「為什麼我們需要這樣做呢？」依據前面概念，為了保持程式碼的乾淨，當類別或是函數出現 `if` 語法，代表你的函數做了超過一件事情。記住，一個函數只做一件事情！
 
 **糟糕的：**
 ```javascript
 class Airplane {
-  *// ...*
+  // ...
   getCruisingAltitude() {
     switch (this.type) {
       case '777':
@@ -765,25 +801,25 @@ class Airplane {
 **適當的：**
 ```javascript
 class Airplane {
-  *// ...*
+  // ...
 }
 
 class Boeing777 extends Airplane {
-  *// ...*
+  // ...
   getCruisingAltitude() {
     return this.getMaxAltitude() - this.getPassengerCount();
   }
 }
 
 class AirForceOne extends Airplane {
-  *// ...*
+ // ...
   getCruisingAltitude() {
     return this.getMaxAltitude();
   }
 }
 
 class Cessna extends Airplane {
-  *// ...*
+  // ...
   getCruisingAltitude() {
     return this.getMaxAltitude() - this.getFuelExpenditure();
   }
@@ -792,8 +828,8 @@ class Cessna extends Airplane {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 避免型別（Type）檢查第一部分
-JavaScript 弱型別語言，代表你的函數應能處理任何型別的引數（argument）。有時這會帶給你一些麻煩，讓你需要做型別檢查。這有很多方法可以避免次問題發生，第一步就是統一所有的 API。
+### 避免型別（Type）檢查：第一部分
+JavaScript 為弱型別語言，代表函數應能處理任何型別的引數（argument）。有時這會帶給你一些麻煩，讓你需要做型別檢查。有很多方法可以避免這種問題發生，第一種就是統一所有的 API。
 
 **糟糕的：**
 ```javascript
@@ -814,12 +850,13 @@ function travelToTexas(vehicle) {
 ```
 
 **譯者附註**
+
 此範例統一了所有的車輛移動的參數、方法與實作，所以不再需要區分不同的類別的車輛呼叫不同的方法。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 避免型別檢查第二部分
-假設你需要型別檢查原始數值，像是字串與整數且你無法使用多態性處理，考慮使用 TypeScript 吧。他是提供標準 JavaScript 靜態類型的的最佳選擇。手動型別檢查需要很多額外處理，你得到的是虛假的型別安全，且失去的可讀性。保持你的 JavaScript 程式碼的整潔、寫好測試與足夠的 Code Review。如果再加上使用 TypeScript 會是更好的選擇。
+### 避免型別檢查：第二部分
+假設你需要型別檢查原始數值，像是字串與整數且你無法使用多態性處理，考慮使用 TypeScript 吧。他是提供標準 JavaScript 靜態類型的的最佳選擇。手動型別檢查需要很多額外處理，你得到的是虛假的型別安全，且失去的可讀性。保持你的 JavaScript 程式碼的整潔、寫好測試與足夠的程式碼審查（Code Review）。如果加上使用 TypeScript 會是更好的選擇。
 
 **糟糕的：**
 ```javascript
@@ -864,7 +901,8 @@ for (let i = 0; i < list.length; i++) {
 ```
 
 **譯者附註**
-簡單來說，你不用在意程式語言層面上優化，因為這部分會因為版本更新而得到優化。但不要因此放棄所有的優化，演算法方面的你還是要注意！
+
+簡單來說，你不用在意程式語言層面上優化，因為這部分會因為版本更新而得到優化。但不要因此放棄所有的優化，演算法的優化才是你該注意的地方！
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
@@ -899,12 +937,12 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 
 ## 物件（Object）與資料結構（Data Structure）
 ### 使用 getters 與 setters
-使用 getters 與 setters 來存取物件中資料，會比單純使用屬性（property）來的好。為什麼呢？以下條列原因：
-	* 當你想要在取得物件屬性時做更多事情，你不用找出所有的程式碼修改
-	* 透過 `set` 可以建立規則進行資料校驗
-	* 封裝內部邏輯
-	* 存取時增加日誌（logging）與錯誤處理（error handling）
-	* 你可以延遲載入你的物件屬性，像是來自伺服器的資料。
+使用 `getters` 與 `setters` 來存取物件中資料，會比單純使用屬性（property）來的好。因為：
+  * 當你想要在取得物件屬性時做更多事情，你不用找出所有的程式碼修改。
+  * 透過 `set` 可以建立規則進行資料校驗。
+  * 封裝內部邏輯。
+  * 存取時增加日誌（logging）與錯誤處理（error handling）。
+  * 你可以延遲載入你的物件屬性，像是來自伺服器的資料。
 
 **糟糕的：**
 ```javascript
@@ -934,7 +972,7 @@ function makeBankAccount() {
 
   // a 'setter', made public via the returned object below*
   function setBalance(amount) {
-    // ... validate before updating the balance*
+    // ... validate before updating the balance
     balance = amount;
   }
 
@@ -952,8 +990,7 @@ account.setBalance(100);
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 讓物件擁有私有成員（members）
-可以透過閉包（closures）來私有化參數（ES5 以下）。
-This can be accomplished through closures (for ES5 and below).
+可以透過閉包（closures）來私有化參數（使用於 ES5 以下）。
 
 **糟糕的：**
 ```javascript
@@ -990,8 +1027,8 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 類別（Classes）
-### 類別語法偏好使用 ES2016/ES6 的類別更甚於 ES5 函數
-ES5 的類別定義非常難以閱讀、繼承、建造與定義方法。假設你需要繼承（請注意你有可能不需要），偏好使用ES2016/ES6 的類別語。然而小型函數會比類別更好，除非你需要大型且複雜的物件。
+### 類別語法偏好使用 ES2015/ES6 的類別更甚於 ES5 函數
+ES5 的類別定義非常難以閱讀、繼承、建造與定義方法。假設你需要繼承（請注意你有可能不需要），偏好使用 ES2015/ES6 的類別語。除非你需要大型且複雜的物件，不然使用小型函數會比類別更好。
 
 **糟糕的：**
 ```javascript
@@ -1040,7 +1077,7 @@ class Animal {
   }
 
   move() {
-    /* ... */
+    // ...
   }
 }
 
@@ -1051,7 +1088,7 @@ class Mammal extends Animal {
   }
 
   liveBirth() {
-    /* ... */
+    // ...
   }
 }
 
@@ -1062,7 +1099,7 @@ class Human extends Mammal {
   }
 
   speak() {
-    /* ... */
+    // ...
   }
 }
 ```
@@ -1145,8 +1182,7 @@ const car = new Car('Ford', 'F-150', 'red').setColor('pink').save();
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 偏好組合（composition）更甚於繼承（inheritance）
-正如四人幫的 [設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，如果可以，你應該優先使用組合而不是繼承。有許多好理由去使用繼承，也有許多好理由去使用組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。
-你應該偏好使用組合更甚於繼承。有非常多理由讓你去使用繼承，也有非常多理由讓你使用組合。
+正如四人幫的[設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，如果可以，你應該優先使用組合而不是繼承。有許多好理由去使用繼承或是組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。你應該偏好使用組合更甚於繼承。
 
 什麼時候使用繼承？這取決於你手上的問題，不過這有一些不錯的參考，說明什麼什麼時候繼承比組合更好用：
 
@@ -1205,7 +1241,7 @@ class Employee {
 
 ## SOLID 原則
 ### 單一功能原則 Single Responsibility Principle (SRP)
-正如 Clean Code 所述：「擁有不要有超過一個理由來修改一個類型」。給一個類別塞滿許多功能，就是你在航班上只能帶一個行李箱一樣。這樣做的問題是，你的類別不會有理想的內聚性，將會有太多理由來對它進行修改。最小化需要修改一個類別的次數很重要，因為一個類別有太多的功能的話，一旦你修改一小部分，將會很難弄清楚它會對程式碼的其他模組造成什麼影響。
+正如 Clean Code 所述：「永遠不要有超過一個理由來修改一個類型」。給一個類別塞滿許多功能，如同你在航班上只能帶一個行李箱一樣。這樣做的問題是，你的類別不會有理想的內聚性，將會有太多理由來對它進行修改。最小化需要修改一個類別的次數很重要，因為一個類別有太多的功能的話，一旦你修改一小部分，將會很難弄清楚它會對程式碼的其他模組造成什麼影響。
 
 **糟糕的：**
 ```javascript
@@ -1255,7 +1291,7 @@ class UserSettings {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 開閉原則 Open/Closed Principle (OCP)
-Bertrand Meyer 說過，「軟體實體（別別、模組、函數）應為開放擴展，但是關閉修改」。這原則基本上說明你應該同意使用者增加功能，而不用修改現有程式碼。
+Bertrand Meyer 說過，「軟體實體（類別、模組、函數）應為開放擴展，但是關閉修改」。這原則基本上說明你應該同意使用者增加功能，而不用修改現有程式碼。
 
 **糟糕的：**
 ```javascript
@@ -1340,9 +1376,9 @@ class HttpRequester {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 里氏替換原則 Liskov Substitution Principle (LSP)
-這是一個驚人但簡單的概念，正式的定義為：「假如類別 S 是類別 T 的子類別，那麼類別 T 的物件（Object）可以被替換成類別 S 的物件（例如，類別 S 的物件可作為類別 T 的物件的替代品），而不需要改變任何程式的理想屬性（正確性、被執行的任務等）。
+這是一個驚人但簡單的概念，正式的定義為：「假如類別 S 是類別 T 的子類別，那麼類別 T 的物件（Object）可以被替換成類別 S 的物件（例如，類別 S 的物件可作為類別 T 的物件的替代品），而不需要改變任何程式的屬性（正確性、被執行的任務等）。
 
-最好的解釋是這樣，假如你有父類別與子類別，父類別與子類別可以互換，而沒有問題發生。你可以能會困惑，讓我們看看一個經典的正方形與長方形的案例。在數學上，正方形是長方形的一種，但如果你使用是一種（is-a）的關係用繼承來實現，你很快會發現問題。
+最好的解釋是這樣，假如你有父類別與子類別，父類別與子類別可以互換，而沒有問題發生。讓我們看看一個經典的正方形與長方形的案例。在數學上，正方形是長方形的一種，但如果你使用是一種（is-a）的關係用繼承來實現，你很快會發現問題。
 
 **糟糕的：**
 ```javascript
@@ -1444,14 +1480,18 @@ const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
 renderLargeShapes(shapes);
 ```
 
+**譯者附註**
+
+`setWidth` 與 `setHeight` 方法無法被繼承，使用上的不一致，更造成了結果錯誤。
+
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 介面隔離原則 Interface Segregation Principle (ISP)
 JavaScript 沒有接口（interfaces），所以這個原則比較不像其他語言一樣嚴格。不過它在 JavaScript  這種缺少類型的語言來說一樣重要。
 
-ISP 原則是「客戶端不應該被強制依賴他們不需要的接口。」因為 JavaScript 是一種弱型別的語言，所以接口是一種隱式的協議。
+ISP 原則是「客戶端不應該被強制依賴他們不需要的接口。」因為 JavaScript 是一種弱型別的語言，所以接口是一種隱式（implicit）的協議。
 
-巨大的設定物件（objects）是一盞是這個原則的好範例，不需要客戶去設定大量的選項是有好處的，因為多數的情況下，他們不需要全部的設定。讓他們可以被選擇，可以防止出現一個過胖的街口。
+巨大的設定物件（objects）是這個原則的好範例，不需要客戶去設定大量的選項是有好處的，因為多數的情況下，他們不需要全部的設定。讓他們可以被選擇，可以防止出現一個過胖的接口。
 
 **糟糕的：**
 ```javascript
@@ -1505,7 +1545,7 @@ class DOMTraverser {
 
 const $ = new DOMTraverser({
   rootNode: document.getElementsByTagName('body'),
-  options: {
+  options: { // animationModule 可被選擇要不要使用
     animationModule() {}
   }
 });
@@ -1515,10 +1555,10 @@ const $ = new DOMTraverser({
 
 ### 依賴反轉原則 Dependency Inversion Principle (DIP)
 這原則說明兩個必要事情：
-	1. 高層級的模組（modules）不應該依賴於低層級的模組。它們兩者必須依賴於抽象。
-	2. 抽象不應該依賴於具體表現，具體實現則需要應依賴於抽象。
+  1. 高層級的模組（modules）不應該依賴於低層級的模組。它們兩者必須依賴於抽象。
+  2. 抽象（abstract）不應該依賴於具體表現（implement），具體實現則需要應依賴於抽象。
 
-這原則一開始很難理解，但如果你使用過 AngularJS，你應該已經知道使用依賴注入（Dependency Injection）來實現這個原則。雖然他們不是同一種概念，但可以透過依賴注入讓高層級模組遠離低層級模組的細節與設定。這樣做的巨大好處是，降低模組間的耦合。耦合是很糟的開發模式，因為會導致程式碼難以重構（refactor）。
+這原則一開始很難理解，但如果你使用過 AngularJS，你應該已經知道，使用依賴注入（Dependency Injection）來實現這個原則。雖然不是同一種概念，但透過依賴注入讓高層級模組遠離低層級模組的細節與設定。這樣做的巨大好處是，降低模組間的耦合。耦合是很糟的開發模式，因為會導致程式碼難以重構（refactor）。
 
 如上所示，JavaScript 沒有任何接口，所以被依賴的抽象是隱式協議。也是就說，一個物件/類別的屬性直接暴露給另外一個。在以下的範例中，任何的請求模組（Request Module）的隱式協議 `InventoryTracker` 都會有一個 `requestItems` 的方法。
 
@@ -1538,7 +1578,7 @@ class InventoryTracker {
   constructor(items) {
     this.items = items;
 
-    // 糟糕的：我們建立了一種依賴，依賴於特定請求方法的實現。
+    // 糟糕的：我們建立了一種依賴，依賴於特定（InventoryRequester）請求模組的實現。
     // 我們實際上只有 `requestItems` 方法依賴於名為 `request` 的請求方法。
     this.requester = new InventoryRequester();
   }
@@ -1597,14 +1637,21 @@ const inventoryTracker = new InventoryTracker(
 inventoryTracker.requestItems();
 ```
 
+**譯者附註**
+
+在糟糕的案例中，`InventoryTracker` 沒有提供替換請求模組的可能，`InventoryTracker` 依賴於 `InventoryRequester`。造成耦合，測試將會被難以撰寫，修改程式碼時將會牽一髮而動全身。
+
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ##  測試（Testing）
-測試比發布更加重要。如果你沒有測試或是不夠充分。當你發布時，你無法確認是否沒有破壞任何事情。測試的量，由你的團隊決定，但是擁有 100% 的測試覆蓋率（包含狀態與分支），是你為什麼能高度自信與內心平靜的原因。所以你需要一個偉大的測試框架，也需要一個[好的覆蓋率工具](http://gotwarlost.github.io/istanbul/)。
+測試比發布更加重要。當發布時，如果你沒有測試或是測試不夠充分，你會無法確認有沒有任何功能被破壞。測試的量，由團隊決定，但是擁有 100% 的測試覆蓋率（包含狀態與分支），是你為什麼能有高度自信與內心平靜的原因。所以你需要一個偉大的測試框架，也需要一個[好的覆蓋率（coverage）工具](http://gotwarlost.github.io/istanbul/)。
 
-沒有任何藉口不寫測試。這裡有很多[好的 JS 測試框架](http://jstherightway.org/#testing-tools)，選一個適合你的團隊喜歡的。當你的團隊選擇好之後，接下來的目標是為任何新功能或是模組撰寫測試。如果你喜好測試去動開發（Test Driven Development）的方式，那就太棒了，重點是確保你上線任何功能或是重構之前，達到足夠的覆蓋率。
+沒有任何藉口不寫測試。這裡有很多[好的 JS 測試框架](http://jstherightway.org/#testing-tools)，選一個你的團隊喜歡的。選擇好之後，接下來的目標是為任何新功能或是模組撰寫測試。如果你喜好[測試驅動開發（Test Driven Development）](https://en.wikipedia.org/wiki/Test-driven_development)的方式，那就太棒了，重點是確保上線前或是重構之前，達到足夠的覆蓋率。
 
-### 每個測試一個概念
+**譯者附註**
+測試是一種保障，當你趕著修正錯誤時，測試會告訴你會不會改了 A 壞了 B。確保每次上線前的功能皆可正常運作。另外測試有分種類，詳情見連結(測試的種類)[https://en.wikipedia.org/wiki/Software_testing]。
+
+### 每個測試只測試一個概念
 
 **糟糕的：**
 ```javascript
@@ -1654,10 +1701,13 @@ describe('MakeMomentJSGreatAgain', () => {
 });
 ```
 
+**譯者附註**
+
+如果你單個測試，測試過多的功能或是概念，當這個測試出錯的時候，你將會難以找到出錯的程式碼。
+
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 併發（Concurrency）
-
 ### 使用 Promises，不要使用回調（callback）
 回調不會簡潔，他們會導致過多的巢狀。在 ES2016/ES6，Promises 已經是內建的全局類型（global type）。使用它們吧！
 
@@ -1748,7 +1798,7 @@ async function getCleanCodeArticle() {
 拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行當前當前堆疊（stack）上的執行函數，結束當前進程（process 在 Node.js），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
 
 ### 不要忽略捕捉到的錯誤
-當捕捉到一個錯誤時，不做任何處理，不能讓你有修復錯誤或是反應的能力。向控制台（`console.log`）紀錄錯誤也不怎麼好，因為往往會丟失在海量的控制台輸出中。如果你使用 `try/catch`包住，代表著你可以能想到這裡可能會出錯，當錯誤發生時你會有個處理方法或是一個執行路徑。
+當捕捉到一個錯誤時，不做任何處理，不能讓你有修復錯誤或是反應的能力。向控制台（`console.log`）紀錄錯誤也不怎麼好，因為往往會丟失在海量的控制台輸出中。如果你使用 `try/catch`包住，代表著你可能想到這裡可能會出錯，當錯誤發生時會有個處理方法。
 
 **糟糕的：**
 ```javascript
@@ -1808,7 +1858,7 @@ getdata()
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 格式化（Formatting）
-格式化是主觀的，就像其他規則一樣，沒有必要硬性規定。重點是沒有必要為了格式而去爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選擇一個就可以！因為作為工程師去爭論格式，就是在浪費時間與金錢。
+格式化是主觀的，就像其他規則一樣，沒有硬性規定。沒有必要為了格式而去爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選擇一個就可以！因為作為工程師去爭論格式，就是在浪費時間與金錢。
 
 針對自動格式化工具不能涵蓋的問題，這裡有一些指南。
 
@@ -1848,7 +1898,7 @@ class Alpaca {}
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 函數的調用者應該與被調用者靠近
-如果一個函數調用另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，調用函數應於調被用函數的正上方。我們傾向於從上到下的閱讀方式，就是看報紙一樣。基於這個原因，保持你的程式碼可以依照這種方式閱讀。
+如果一個函數調用另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，調用函數應於被調用函數的正上方。我們傾向於從上到下的閱讀方式，就是看報紙一樣。基於這個原因，保持你的程式碼可以依照這種方式閱讀。
 
 **糟糕的：**
 ```javascript
@@ -2016,6 +2066,7 @@ function combine(a, b) {
 ```
 
 **譯者附註**
+
 在註解中寫歷史紀錄並沒有在版本控制中來得有效，另外補充有關歷史紀錄如何撰寫的規範（[如何撰寫 Git Commet Message](https://chris.beams.io/posts/git-commit/)）。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
