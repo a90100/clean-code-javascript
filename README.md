@@ -313,7 +313,7 @@ addMonthToDate(1, date);
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 函數應該只做一層抽象（Abstraction）
-當你的函數需要的抽象多餘一層時，代表你的函數做太多事情了。將其分解以利重用與測試。
+當你的函數需要的抽象多於一層時，代表你的函數做太多事情了。將其分解以利重用與測試。
 
 **糟糕的：**
 ```javascript
@@ -1487,11 +1487,11 @@ renderLargeShapes(shapes);
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 介面隔離原則 Interface Segregation Principle (ISP)
-JavaScript 沒有接口（interfaces），所以這個原則比較不像其他語言一樣嚴格。不過它在 JavaScript  這種缺少類型的語言來說一樣重要。
+JavaScript 沒有介面（interfaces），所以這個原則比較不像其他語言一樣嚴格。不過它在 JavaScript  這種缺少類型的語言來說一樣重要。
 
-ISP 原則是「客戶端不應該被強制依賴他們不需要的接口。」因為 JavaScript 是一種弱型別的語言，所以接口是一種隱式（implicit）的協議。
+ISP 原則是「客戶端不應該被強制依賴他們不需要的介面。」因為 JavaScript 是一種弱型別的語言，所以介面是一種隱式（implicit）的協議。
 
-巨大的設定物件（objects）是這個原則的好範例，不需要客戶去設定大量的選項是有好處的，因為多數的情況下，他們不需要全部的設定。讓他們可以被選擇，可以防止出現一個過胖的接口。
+巨大的設定物件（objects）是這個原則的好範例，不需要客戶去設定大量的選項是有好處的，因為多數的情況下，他們不需要全部的設定。讓他們可以被選擇，可以防止出現一個過胖的介面。
 
 **糟糕的：**
 ```javascript
@@ -1556,11 +1556,11 @@ const $ = new DOMTraverser({
 ### 依賴反轉原則 Dependency Inversion Principle (DIP)
 這原則說明兩個必要事情：
   1. 高層級的模組（modules）不應該依賴於低層級的模組。它們兩者必須依賴於抽象。
-  2. 抽象（abstract）不應該依賴於具體表現（implement），具體實現則需要應依賴於抽象。
+  2. 抽象（abstract）不應該依賴於具體實現（implement），具體實現則需要應依賴於抽象。
 
 這原則一開始很難理解，但如果你使用過 AngularJS，你應該已經知道，使用依賴注入（Dependency Injection）來實現這個原則。雖然不是同一種概念，但透過依賴注入讓高層級模組遠離低層級模組的細節與設定。這樣做的巨大好處是，降低模組間的耦合。耦合是很糟的開發模式，因為會導致程式碼難以重構（refactor）。
 
-如上所示，JavaScript 沒有任何接口，所以被依賴的抽象是隱式協議。也是就說，一個物件/類別的屬性直接暴露給另外一個。在以下的範例中，任何的請求模組（Request Module）的隱式協議 `InventoryTracker` 都會有一個 `requestItems` 的方法。
+如上所示，JavaScript 沒有介面，所以被依賴的抽象是隱式協議。也是就說，一個物件/類別的屬性直接暴露給另外一個。在以下的範例中，任何的請求模組（Request Module）的隱式協議 `InventoryTracker` 都會有一個 `requestItems` 的方法。
 
 **糟糕的：**
 ```javascript
@@ -2043,7 +2043,7 @@ doStuff();
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要留有日誌式的註解
-記住，使用版本控制！不需要無用的程式碼、註解掉得程式碼，尤其是日誌式的註解。使用 `git log` 來保存歷史紀錄。
+記住，使用版本控制！不需要無用的、註解掉的程式碼，尤其是日誌式的註解。使用 `git log` 來保存歷史紀錄。
 
 **糟糕的：**
 ```javascript
