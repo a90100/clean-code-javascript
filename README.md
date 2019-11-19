@@ -935,7 +935,7 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-## 物件（Object）與資料結構（Data Structure）
+## 物件（Objects）與資料結構（Data Structures）
 ### 使用 getters 與 setters
 使用 `getters` 與 `setters` 來存取物件中資料，會比單純使用屬性（property）來的好。因為：
   * 當你想要在取得物件屬性時做更多事情，你不用找出所有的程式碼修改。
