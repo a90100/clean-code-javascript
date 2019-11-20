@@ -935,7 +935,7 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-## 物件（Object）與資料結構（Data Structure）
+## 物件（Objects）與資料結構（Data Structures）
 ### 使用 getters 與 setters
 使用 `getters` 與 `setters` 來存取物件中資料，會比單純使用屬性（property）來的好。因為：
   * 當你想要在取得物件屬性時做更多事情，你不用找出所有的程式碼修改。
@@ -1239,7 +1239,7 @@ class Employee {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-## SOLID 原則
+## 物件導向基本原則（SOLID）
 ### 單一功能原則 Single Responsibility Principle (SRP)
 正如 Clean Code 所述：「永遠不要有超過一個理由來修改一個類型」。給一個類別塞滿許多功能，如同你在航班上只能帶一個行李箱一樣。這樣做的問題是，你的類別不會有理想的內聚性，將會有太多理由來對它進行修改。最小化需要修改一個類別的次數很重要，因為一個類別有太多的功能的話，一旦你修改一小部分，將會很難弄清楚它會對程式碼的其他模組造成什麼影響。
 
@@ -1707,7 +1707,7 @@ describe('MakeMomentJSGreatAgain', () => {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-## 併發（Concurrency）
+## 並發（Concurrency）
 ### 使用 Promises，不要使用回調（callback）
 回調不會簡潔，他們會導致過多的巢狀。在 ES2016/ES6，Promises 已經是內建的全局類型（global type）。使用它們吧！
 
@@ -2106,7 +2106,7 @@ const actions = function() {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-## 翻譯
+## 翻譯（Translation）
 以下為可用的語言翻譯。
 
 - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**:
