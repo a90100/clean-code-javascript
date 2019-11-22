@@ -118,7 +118,7 @@ locations.forEach(l => {
   // ...
   // ...
   // ...
-  // Wait, what is `l` for again?
+  // 等等，這 `l` 是…？
   dispatch(l);
 });
 ```
@@ -173,8 +173,8 @@ function paintCar(car) {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 使用默認參數（Parameter）代替條件判斷（Conditionals）
-使用默認參數較整潔，但請注意，當參數為 `undefined` 時才會作用，其他種類的虛值（Falsy）不會，像是 `''`、`false`、`null`、`0`、`NaN` 等。
+### 使用預設參數（Parameter）代替條件判斷（Conditionals）
+使用預設參數較整潔，但請注意，當參數為 `undefined` 時才會作用，其他種類的虛值（Falsy）不會，像是 `''`、`false`、`null`、`0`、`NaN` 等。
 
 **糟糕的：**
 ```javascript
@@ -193,9 +193,9 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
 
 **譯者附註**
 
-默認參數非常好用，可以結合工廠模式做出很多應用。另外建議統一使用 `undefined` 代替 `null` 當作空值的回傳值。
+預設參數非常好用，可以結合工廠模式做出很多應用。另外建議統一使用 `undefined` 代替 `null` 當作空值的回傳值。
 
-此處原文為 **Arguments**，但是函數的參數定義應該為 **Parameter**，而調用函數時傳遞的引數才是 **Arguments**。
+此處原文為 **Arguments**，但是函數的參數定義應該為 **Parameter**，而呼叫函數時傳遞的引數才是 **Arguments**。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
@@ -233,14 +233,14 @@ createMenu({
 
 **譯者附註**
 
-這種方法非常適合用於工廠模式，結合上一章的默認參數，譯者推薦的使用方式如下：
+這種方法非常適合用於工廠模式，結合上一章的預設參數，譯者推薦的使用方式如下：
 ```javascript
 function createMenu({
-  title = 'Default Title', // 傳遞的物件不齊全，使用默認屬性
+  title = 'Default Title', // 傳遞的物件不齊全，使用預設屬性
   body = '',
   buttonText = 'My Button',
   cancellable = true
-} = {}) { // 如未傳遞任何參數使用默認空物件，避免 TypeError: Cannot destructure property `...` of 'undefined' or 'null'.
+} = {}) { // 如未傳遞任何參數使用預設空物件，避免 TypeError: Cannot destructure property `...` of 'undefined' or 'null'.
   // ...
 }
 
@@ -292,7 +292,7 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// It's hard to tell from the function name what is added*
+// 難以從函數名稱看出到底加入了什麼*
 addToDate(date, 1);
 ```
 
@@ -483,7 +483,7 @@ createMenu(menuConfig);
 ```javascript
 const menuConfig = {
   title: 'Order',
-  // User did not include 'body' key
+  // 使用者漏掉了 'body'
   buttonText: 'Send',
   cancellable: true
 };
@@ -499,7 +499,7 @@ function createMenu(config) {
     config
   );
 
-  // config now equals: {title: 'Order', body: 'Bar', buttonText: 'Send', cancellable: true}
+  // config 現在等同於： {title: 'Order', body: 'Bar', buttonText: 'Send', cancellable: true}
   // ...
 }
 
@@ -625,7 +625,7 @@ const checkIs18Age = age => {
 
 另外使用解構的方式複製資料，只會複製第一層而已。
 
-```
+```javascript
 // 巢狀解構只能複製第一層
 const obj1 = { subObj: { message: 'Hey' } }
 const obj2 = { ...obj1 }
@@ -636,7 +636,7 @@ console.log(obj1.subObj.message) // 'Yo'
 
 如果要複製巢狀結構，你需要深度複製。可以使用一些函數庫 [loadsh](https://lodash.com/) 的 `_.CloneDeep` 或是 [ramda](https://ramdajs.com/) 的 `clone`。或是使用 `JSON.parse(JSON.stringify(object))` 來實現。不過使用 JSON 的話，會失去 Function 的複製。
 
-```
+```javascript
 // 使用 JSON 來深度複製
 const obj1 = { subObj: { message: 'Hey' } }
 const obj2 = JSON.parse(JSON.stringify(obj1))
@@ -882,12 +882,12 @@ function combine(val1, val2) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 別過度優化
-現代瀏覽器在運行時幫你做了很多優化。大多數的情況，你自行優化是浪費時間的。這裏有些很好的[資源](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)，去了解哪些優化是無用的。
+現代瀏覽器在運行時幫你做了很多優化。大多數的情況，你所做的優化都是在浪費你的時間。這裏有些很好的[資源](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)，去了解哪些優化是無用的。
 
 **糟糕的：**
 ```javascript
-// 在舊的瀏覽器中，每次迭代（iteration）都不會緩存（cache）`list.length`，這將帶給你一些重新計算時的性能損耗。
-// 在較新的瀏覽器中已經被優化了，你不用手動去緩存。
+// 在舊的瀏覽器中並不會快取（cache）`list.length`，每次迭代（iteration）時的重新計算相當損耗效能。
+// 這在新瀏覽器中已被優化，你不用手動去快取。
 for (let i = 0, len = list.length; i < len; i++) {
   // ...
 }
@@ -962,17 +962,17 @@ account.balance = 100;
 **適當的：**
 ```javascript
 function makeBankAccount() {
-  // this one is private
+  // 私有變數
   let balance = 0;
 
-  // a 'getter', made public via the returned object below*
+  // 'getter'，經由下方的返回物件對外公開
   function getBalance() {
     return balance;
   }
 
-  // a 'setter', made public via the returned object below*
+  // 'setter'，經由下方的返回物件對外公開
   function setBalance(amount) {
-    // ... validate before updating the balance
+    // ... 更新前先進行驗證
     balance = amount;
   }
 
@@ -1028,7 +1028,7 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 
 ## 類別（Classes）
 ### 類別語法偏好使用 ES2015/ES6 的類別更甚於 ES5 函數
-ES5 的類別定義非常難以閱讀、繼承、建造與定義方法。假設你需要繼承（請注意你有可能不需要），偏好使用 ES2015/ES6 的類別語。除非你需要大型且複雜的物件，不然使用小型函數會比類別更好。
+ES5 的類別定義非常難以閱讀、繼承、建造與定義方法。假設你需要繼承（請注意你有可能不需要），偏好使用 ES2015/ES6 的類別。除非你需要大型且複雜的物件，不然使用小型函數會比類別更好。
 
 **糟糕的：**
 ```javascript
@@ -1107,9 +1107,9 @@ class Human extends Mammal {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用方法鏈（method chaining）
-這個模式（pattern）在 JavaScript 中非常有用，你可以在很多函式庫中看到，像是 jQuery 與 Lodash。它可以讓你的程式碼表達的更好。
+這個模式（pattern）在 JavaScript 中非常有用，你可以在很多函數庫中看到，像是 jQuery 與 Lodash。它可以讓你的程式碼表達的更好。
 
-基於這個原因，方法鏈可以讓你的程式碼看起來更佳簡潔。在你的類別函數中，只需要回傳 `this` 在每一個函數中，你就可以鏈結所有類別中的方法。
+基於這個原因，方法鏈可以讓你的程式碼看起來更加簡潔。在你的類別函數中，只需要回傳 `this` 在每一個函數中，你就可以鏈結所有類別中的方法。
 
 **糟糕的：**
 ```javascript
@@ -1153,25 +1153,25 @@ class Car {
 
   setMake(make) {
     this.make = make;
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 
   setModel(model) {
     this.model = model;
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 
   setColor(color) {
     this.color = color;
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 
   save() {
     console.log(this.make, this.model, this.color);
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 }
@@ -1182,7 +1182,7 @@ const car = new Car('Ford', 'F-150', 'red').setColor('pink').save();
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 偏好組合（composition）更甚於繼承（inheritance）
-正如四人幫的[設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，如果可以，你應該優先使用組合而不是繼承。有許多好理由去使用繼承或是組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。你應該偏好使用組合更甚於繼承。
+正如四人幫的[設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，可以的話你應該優先使用組合而不是繼承。有許多好理由去使用繼承或是組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。你應該偏好使用組合更甚於繼承。
 
 什麼時候使用繼承？這取決於你手上的問題，不過這有一些不錯的參考，說明什麼什麼時候繼承比組合更好用：
 
@@ -1317,22 +1317,22 @@ class HttpRequester {
   fetch(url) {
     if (this.adapter.name === 'ajaxAdapter') {
       return makeAjaxCall(url).then(response => {
-        // transform response and return
+        // 轉換回應並回傳
       });
     } else if (this.adapter.name === 'nodeAdapter') {
       return makeHttpCall(url).then(response => {
-        // transform response and return
+        // 轉換回應並回傳
       });
     }
   }
 }
 
 function makeAjaxCall(url) {
-  // request and return promise
+  // 發送請求並回傳 promise
 }
 
 function makeHttpCall(url) {
-  // request and return promise
+  // 發送請求並回傳 promise
 }
 ```
 
@@ -1345,7 +1345,7 @@ class AjaxAdapter extends Adapter {
   }
 
   request(url) {
-    // request and return promise
+    // 發送請求並回傳 promise
   }
 }
 
@@ -1356,7 +1356,7 @@ class NodeAdapter extends Adapter {
   }
 
   request(url) {
-    // request and return promise
+    // 發送請求並回傳 promise
   }
 }
 
@@ -1649,7 +1649,8 @@ inventoryTracker.requestItems();
 沒有任何藉口不寫測試。這裡有很多[好的 JS 測試框架](http://jstherightway.org/#testing-tools)，選一個你的團隊喜歡的。選擇好之後，接下來的目標是為任何新功能或是模組撰寫測試。如果你喜好[測試驅動開發（Test Driven Development）](https://en.wikipedia.org/wiki/Test-driven_development)的方式，那就太棒了，重點是確保上線前或是重構之前，達到足夠的覆蓋率。
 
 **譯者附註**
-測試是一種保障，當你趕著修正錯誤時，測試會告訴你會不會改了 A 壞了 B。確保每次上線前的功能皆可正常運作。另外測試有分種類，詳情見連結(測試的種類)[https://en.wikipedia.org/wiki/Software_testing]。
+
+測試是一種保障，當你趕著修正錯誤時，測試會告訴你會不會改了 A 壞了 B。確保每次上線前的功能皆可正常運作。另外測試有分種類，詳情見連結[測試的種類](https://en.wikipedia.org/wiki/Software_testing)。
 
 ### 每個測試只測試一個概念
 
@@ -1708,8 +1709,8 @@ describe('MakeMomentJSGreatAgain', () => {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 並發（Concurrency）
-### 使用 Promises，不要使用回調（callback）
-回調不會簡潔，他們會導致過多的巢狀。在 ES2016/ES6，Promises 已經是內建的全局類型（global type）。使用它們吧！
+### 使用 Promises，不要使用回呼函式（callback）
+回呼函式不怎麼簡潔，他們會導致過多的巢狀。在 ES2016/ES6，Promises 已經是內建的全局類型（global type）。使用它們吧！
 
 **糟糕的：**
 ```javascript
@@ -1755,7 +1756,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### Async/Await 比 Promises 更加簡潔
-Promises 是回調的一種非常簡潔的替代品，但是 ES2017/ES8 帶來了 async 與 await，提供了一個更簡潔的方案。你需要的只是一個前綴為 `async` 關鍵字的函數，接下來你編寫邏輯時就不需要使用 `then` 函數鍊。如果你能使用 ES2017/ES8 的進階功能的話，今天就使用它吧！
+Promises 是回呼函式的一種非常簡潔的替代品，但是 ES2017/ES8 帶來了 async 與 await，提供了一個更簡潔的方案。你需要的只是一個前綴為 `async` 關鍵字的函數，接下來你編寫邏輯時就不需要使用 `then` 函數鍊。如果你能使用 ES2017/ES8 的進階功能的話，今天就使用它吧！
 
 **糟糕的：**
 ```javascript
@@ -1795,10 +1796,10 @@ async function getCleanCodeArticle() {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 錯誤處理（Error Handling）
-拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行當前當前堆疊（stack）上的執行函數，結束當前進程（process 在 Node.js），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
+拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行目前堆疊（stack）上的執行函數，結束（Node.js 中的）目前程序（process），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
 
 ### 不要忽略捕捉到的錯誤
-當捕捉到一個錯誤時，不做任何處理，不能讓你有修復錯誤或是反應的能力。向控制台（`console.log`）紀錄錯誤也不怎麼好，因為往往會丟失在海量的控制台輸出中。如果你使用 `try/catch`包住，代表著你可能想到這裡可能會出錯，當錯誤發生時會有個處理方法。
+捕捉到一個錯誤時而不做任何處理，會讓你失去修復或是反應錯誤的能力。將錯誤紀錄於控制台（`console.log`）也不怎麼好，因為你往往會迷失在控制台大量的記錄之中。如果你使用 `try/catch` 包住程式碼，代表你預期這裡可能會出錯，因此當錯誤發生時你必須要有個處理方法。
 
 **糟糕的：**
 ```javascript
@@ -1814,18 +1815,18 @@ try {
 try {
   functionThatMightThrow();
 } catch (error) {
-  // 比 console.log 更加顯眼
+  // 可以這樣（會比 console.log 更吵）
   console.error(error);
-  // 另外種方法
+  // 或這種方法
   notifyUserOfError(error);
-  // 另外種方法
+  // 另外一種方法
   reportErrorToService(error);
-  // 或是全部都做
+  // 或是全部都做！
 }
 ```
 
 ### 不要忽略被拒絕的 Promises
-如因如上，不要忽略任何捕捉到的錯誤。
+原因如上節所述，不要忽略任何捕捉到的錯誤。
 
 **糟糕的：**
 ```javascript
@@ -1845,25 +1846,25 @@ getdata()
     functionThatMightThrow(data);
   })
   .catch(error => {
-    // One option (more noisy than console.log):
+    // 可以這樣（會比 console.log 更吵）
     console.error(error);
-    // Another option:
+    // 或這種方法
     notifyUserOfError(error);
-    // Another option:
+    // 另外一種方法
     reportErrorToService(error);
-    // OR do all three!
+    // 或是全部都做！
   });
 ```
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 格式化（Formatting）
-格式化是主觀的，就像其他規則一樣，沒有硬性規定。沒有必要為了格式而去爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選擇一個就可以！因為作為工程師去爭論格式，就是在浪費時間與金錢。
+格式化是很主觀的，就像其他規則一樣沒有硬性規定，沒有必要為了格式而爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選一個就是了！對工程師來說，爭論格式就是在浪費時間與金錢。
 
 針對自動格式化工具不能涵蓋的問題，這裡有一些指南。
 
 ### 使用一致的大小寫
-JavaScript 是無類型的，所以大小寫可以告訴關於變數、函數等很多的事情。這些規則是主觀的，所以你的團隊可以自由選擇。重點是，不管選了去什麼，要保持一致。
+JavaScript 是無型別的，所以從大小寫可以看出關於變數、函數等很多的事情。這些規則是很主觀的，所以你的團隊可以自由選擇。重點是，不管選了去什麼，就保持一致。
 
 **糟糕的：**
 ```javascript
@@ -1897,8 +1898,8 @@ class Alpaca {}
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 函數的調用者應該與被調用者靠近
-如果一個函數調用另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，調用函數應於被調用函數的正上方。我們傾向於從上到下的閱讀方式，就是看報紙一樣。基於這個原因，保持你的程式碼可以依照這種方式閱讀。
+### 函數的呼叫者應該與被呼叫者靠近
+如果一個函數呼叫另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，呼叫函數應於被呼叫函數的正上方。我們傾向於從上到下的閱讀方式，就像看報紙一樣。基於這個原因，讓你的程式碼可以依照這種方式閱讀。
 
 **糟糕的：**
 ```javascript
@@ -1981,8 +1982,8 @@ review.perfReview();
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 註解（Comments）
-### 只對包含複雜業務邏輯的東西，撰寫註解
-註解是代表的辯解，而不是要求。多數情況下，好的程式碼就是文件。
+### 只對商業邏輯複雜的部分撰寫註解
+註解是代表的辯解，而不是要求。多數情況下，好的程式碼本身就是文件。
 
 **糟糕的：**
 ```javascript
@@ -2025,7 +2026,7 @@ function hashIt(data) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要在程式碼中保留被註解掉的程式碼
-因為有版本控制，舊的程式碼流程歷史紀錄中即可。
+有了版本控制，舊的程式碼留在歷史紀錄中就好。
 
 **糟糕的：**
 ```javascript
@@ -2107,7 +2108,7 @@ const actions = function() {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 翻譯（Translation）
-以下為可用的語言翻譯。
+以下為所有的翻譯版本。
 
 - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**:
   [GavBaros/clean-code-javascript-fr](https://github.com/GavBaros/clean-code-javascript-fr)
