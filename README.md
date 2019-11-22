@@ -292,7 +292,7 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// 難以從函數名稱看出到底加入了什麼*
+// 難以從函數名稱看出到底加入了什麼
 addToDate(date, 1);
 ```
 
