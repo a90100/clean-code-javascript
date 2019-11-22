@@ -118,7 +118,7 @@ locations.forEach(l => {
   // ...
   // ...
   // ...
-  // Wait, what is `l` for again?
+  // 等等，這 `l` 是…？
   dispatch(l);
 });
 ```
@@ -292,7 +292,7 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// It's hard to tell from the function name what is added*
+// 難以從函數名稱看出到底加入了什麼*
 addToDate(date, 1);
 ```
 
@@ -483,7 +483,7 @@ createMenu(menuConfig);
 ```javascript
 const menuConfig = {
   title: 'Order',
-  // User did not include 'body' key
+  // 使用者漏掉了 'body'
   buttonText: 'Send',
   cancellable: true
 };
@@ -499,7 +499,7 @@ function createMenu(config) {
     config
   );
 
-  // config now equals: {title: 'Order', body: 'Bar', buttonText: 'Send', cancellable: true}
+  // config 現在等同於： {title: 'Order', body: 'Bar', buttonText: 'Send', cancellable: true}
   // ...
 }
 
@@ -962,17 +962,17 @@ account.balance = 100;
 **適當的：**
 ```javascript
 function makeBankAccount() {
-  // this one is private
+  // 私有變數
   let balance = 0;
 
-  // a 'getter', made public via the returned object below*
+  // 'getter'，經由下方的返回物件對外公開
   function getBalance() {
     return balance;
   }
 
-  // a 'setter', made public via the returned object below*
+  // 'setter'，經由下方的返回物件對外公開
   function setBalance(amount) {
-    // ... validate before updating the balance
+    // ... 更新前先進行驗證
     balance = amount;
   }
 
@@ -1153,25 +1153,25 @@ class Car {
 
   setMake(make) {
     this.make = make;
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 
   setModel(model) {
     this.model = model;
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 
   setColor(color) {
     this.color = color;
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 
   save() {
     console.log(this.make, this.model, this.color);
-    // NOTE: Returning this for chaining
+    // 注意：回傳 this 以鏈結
     return this;
   }
 }
@@ -1317,22 +1317,22 @@ class HttpRequester {
   fetch(url) {
     if (this.adapter.name === 'ajaxAdapter') {
       return makeAjaxCall(url).then(response => {
-        // transform response and return
+        // 轉換回應並回傳
       });
     } else if (this.adapter.name === 'nodeAdapter') {
       return makeHttpCall(url).then(response => {
-        // transform response and return
+        // 轉換回應並回傳
       });
     }
   }
 }
 
 function makeAjaxCall(url) {
-  // request and return promise
+  // 發送請求並回傳 promise
 }
 
 function makeHttpCall(url) {
-  // request and return promise
+  // 發送請求並回傳 promise
 }
 ```
 
@@ -1345,7 +1345,7 @@ class AjaxAdapter extends Adapter {
   }
 
   request(url) {
-    // request and return promise
+    // 發送請求並回傳 promise
   }
 }
 
@@ -1356,7 +1356,7 @@ class NodeAdapter extends Adapter {
   }
 
   request(url) {
-    // request and return promise
+    // 發送請求並回傳 promise
   }
 }
 
@@ -1845,20 +1845,20 @@ getdata()
     functionThatMightThrow(data);
   })
   .catch(error => {
-    // One option (more noisy than console.log):
+    // 可以這樣（會比 console.log 更吵）
     console.error(error);
-    // Another option:
+    // 或這種方法
     notifyUserOfError(error);
-    // Another option:
+    // 另外一種方法
     reportErrorToService(error);
-    // OR do all three!
+    // 或是全部都做！
   });
 ```
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 格式化（Formatting）
-格式化是主觀的，就像其他規則一樣，沒有硬性規定。沒有必要為了格式而去爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選擇一個就可以！因為作為工程師去爭論格式，就是在浪費時間與金錢。
+格式化是很主觀的，就像其他規則一樣沒有硬性規定，沒有必要為了格式而爭論，這裡有[大量的自動化格式工具](https://standardjs.com/rules.html)，選一個就是了！對工程師來說，爭論格式就是在浪費時間與金錢。
 
 針對自動格式化工具不能涵蓋的問題，這裡有一些指南。
 
