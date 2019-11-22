@@ -2068,7 +2068,7 @@ function combine(a, b) {
 
 **譯者附註**
 
-在註解中寫歷史紀錄並沒有在版本控制中來得有效，另外補充有關歷史紀錄如何撰寫的規範（[如何撰寫 Git Commet Message](https://chris.beams.io/posts/git-commit/)）。
+在註解中寫歷史紀錄並沒有在版本控制中來得有效，另外補充有關歷史紀錄如何撰寫的規範（[如何撰寫 Git Commit Message](https://chris.beams.io/posts/git-commit/)）。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
