@@ -173,8 +173,8 @@ function paintCar(car) {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 使用默認參數（Parameter）代替條件判斷（Conditionals）
-使用默認參數較整潔，但請注意，當參數為 `undefined` 時才會作用，其他種類的虛值（Falsy）不會，像是 `''`、`false`、`null`、`0`、`NaN` 等。
+### 使用預設參數（Parameter）代替條件判斷（Conditionals）
+使用預設參數較整潔，但請注意，當參數為 `undefined` 時才會作用，其他種類的虛值（Falsy）不會，像是 `''`、`false`、`null`、`0`、`NaN` 等。
 
 **糟糕的：**
 ```javascript
@@ -193,9 +193,9 @@ function createMicrobrewery(name = 'Hipster Brew Co.') {
 
 **譯者附註**
 
-默認參數非常好用，可以結合工廠模式做出很多應用。另外建議統一使用 `undefined` 代替 `null` 當作空值的回傳值。
+預設參數非常好用，可以結合工廠模式做出很多應用。另外建議統一使用 `undefined` 代替 `null` 當作空值的回傳值。
 
-此處原文為 **Arguments**，但是函數的參數定義應該為 **Parameter**，而調用函數時傳遞的引數才是 **Arguments**。
+此處原文為 **Arguments**，但是函數的參數定義應該為 **Parameter**，而呼叫函數時傳遞的引數才是 **Arguments**。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
@@ -233,14 +233,14 @@ createMenu({
 
 **譯者附註**
 
-這種方法非常適合用於工廠模式，結合上一章的默認參數，譯者推薦的使用方式如下：
+這種方法非常適合用於工廠模式，結合上一章的預設參數，譯者推薦的使用方式如下：
 ```javascript
 function createMenu({
-  title = 'Default Title', // 傳遞的物件不齊全，使用默認屬性
+  title = 'Default Title', // 傳遞的物件不齊全，使用預設屬性
   body = '',
   buttonText = 'My Button',
   cancellable = true
-} = {}) { // 如未傳遞任何參數使用默認空物件，避免 TypeError: Cannot destructure property `...` of 'undefined' or 'null'.
+} = {}) { // 如未傳遞任何參數使用預設空物件，避免 TypeError: Cannot destructure property `...` of 'undefined' or 'null'.
   // ...
 }
 
@@ -1107,9 +1107,9 @@ class Human extends Mammal {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 使用方法鏈（method chaining）
-這個模式（pattern）在 JavaScript 中非常有用，你可以在很多函式庫中看到，像是 jQuery 與 Lodash。它可以讓你的程式碼表達的更好。
+這個模式（pattern）在 JavaScript 中非常有用，你可以在很多函數庫中看到，像是 jQuery 與 Lodash。它可以讓你的程式碼表達的更好。
 
-基於這個原因，方法鏈可以讓你的程式碼看起來更佳簡潔。在你的類別函數中，只需要回傳 `this` 在每一個函數中，你就可以鏈結所有類別中的方法。
+基於這個原因，方法鏈可以讓你的程式碼看起來更加簡潔。在你的類別函數中，只需要回傳 `this` 在每一個函數中，你就可以鏈結所有類別中的方法。
 
 **糟糕的：**
 ```javascript
@@ -1708,8 +1708,8 @@ describe('MakeMomentJSGreatAgain', () => {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 並發（Concurrency）
-### 使用 Promises，不要使用回調（callback）
-回調不會簡潔，他們會導致過多的巢狀。在 ES2016/ES6，Promises 已經是內建的全局類型（global type）。使用它們吧！
+### 使用 Promises，不要使用回呼函式（callback）
+回呼函式不怎麼簡潔，他們會導致過多的巢狀。在 ES2016/ES6，Promises 已經是內建的全局類型（global type）。使用它們吧！
 
 **糟糕的：**
 ```javascript
@@ -1755,7 +1755,7 @@ get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### Async/Await 比 Promises 更加簡潔
-Promises 是回調的一種非常簡潔的替代品，但是 ES2017/ES8 帶來了 async 與 await，提供了一個更簡潔的方案。你需要的只是一個前綴為 `async` 關鍵字的函數，接下來你編寫邏輯時就不需要使用 `then` 函數鍊。如果你能使用 ES2017/ES8 的進階功能的話，今天就使用它吧！
+Promises 是回呼函式的一種非常簡潔的替代品，但是 ES2017/ES8 帶來了 async 與 await，提供了一個更簡潔的方案。你需要的只是一個前綴為 `async` 關鍵字的函數，接下來你編寫邏輯時就不需要使用 `then` 函數鍊。如果你能使用 ES2017/ES8 的進階功能的話，今天就使用它吧！
 
 **糟糕的：**
 ```javascript
@@ -1795,7 +1795,7 @@ async function getCleanCodeArticle() {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 錯誤處理（Error Handling）
-拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行當前當前堆疊（stack）上的執行函數，結束當前進程（process 在 Node.js），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
+拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行目前堆疊（stack）上的執行函數，結束（Node.js 中的）目前程序（process），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
 
 ### 不要忽略捕捉到的錯誤
 當捕捉到一個錯誤時，不做任何處理，不能讓你有修復錯誤或是反應的能力。向控制台（`console.log`）紀錄錯誤也不怎麼好，因為往往會丟失在海量的控制台輸出中。如果你使用 `try/catch`包住，代表著你可能想到這裡可能會出錯，當錯誤發生時會有個處理方法。
@@ -1863,7 +1863,7 @@ getdata()
 針對自動格式化工具不能涵蓋的問題，這裡有一些指南。
 
 ### 使用一致的大小寫
-JavaScript 是無類型的，所以大小寫可以告訴關於變數、函數等很多的事情。這些規則是主觀的，所以你的團隊可以自由選擇。重點是，不管選了去什麼，要保持一致。
+JavaScript 是無型別的，所以從大小寫可以看出關於變數、函數等很多的事情。這些規則是很主觀的，所以你的團隊可以自由選擇。重點是，不管選了去什麼，就保持一致。
 
 **糟糕的：**
 ```javascript
@@ -1897,7 +1897,7 @@ class Alpaca {}
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 函數的調用者應該與被調用者靠近
+### 函數的呼叫者應該與被呼叫者靠近
 如果一個函數調用另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，調用函數應於被調用函數的正上方。我們傾向於從上到下的閱讀方式，就是看報紙一樣。基於這個原因，保持你的程式碼可以依照這種方式閱讀。
 
 **糟糕的：**
