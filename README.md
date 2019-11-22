@@ -625,7 +625,7 @@ const checkIs18Age = age => {
 
 另外使用解構的方式複製資料，只會複製第一層而已。
 
-```
+```javascript
 // 巢狀解構只能複製第一層
 const obj1 = { subObj: { message: 'Hey' } }
 const obj2 = { ...obj1 }
@@ -636,7 +636,7 @@ console.log(obj1.subObj.message) // 'Yo'
 
 如果要複製巢狀結構，你需要深度複製。可以使用一些函數庫 [loadsh](https://lodash.com/) 的 `_.CloneDeep` 或是 [ramda](https://ramdajs.com/) 的 `clone`。或是使用 `JSON.parse(JSON.stringify(object))` 來實現。不過使用 JSON 的話，會失去 Function 的複製。
 
-```
+```javascript
 // 使用 JSON 來深度複製
 const obj1 = { subObj: { message: 'Hey' } }
 const obj2 = JSON.parse(JSON.stringify(obj1))
@@ -1649,7 +1649,8 @@ inventoryTracker.requestItems();
 沒有任何藉口不寫測試。這裡有很多[好的 JS 測試框架](http://jstherightway.org/#testing-tools)，選一個你的團隊喜歡的。選擇好之後，接下來的目標是為任何新功能或是模組撰寫測試。如果你喜好[測試驅動開發（Test Driven Development）](https://en.wikipedia.org/wiki/Test-driven_development)的方式，那就太棒了，重點是確保上線前或是重構之前，達到足夠的覆蓋率。
 
 **譯者附註**
-測試是一種保障，當你趕著修正錯誤時，測試會告訴你會不會改了 A 壞了 B。確保每次上線前的功能皆可正常運作。另外測試有分種類，詳情見連結(測試的種類)[https://en.wikipedia.org/wiki/Software_testing]。
+
+測試是一種保障，當你趕著修正錯誤時，測試會告訴你會不會改了 A 壞了 B。確保每次上線前的功能皆可正常運作。另外測試有分種類，詳情見連結[測試的種類](https://en.wikipedia.org/wiki/Software_testing)。
 
 ### 每個測試只測試一個概念
 
