@@ -882,12 +882,12 @@ function combine(val1, val2) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 別過度優化
-現代瀏覽器在運行時幫你做了很多優化。大多數的情況，你自行優化是浪費時間的。這裏有些很好的[資源](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)，去了解哪些優化是無用的。
+現代瀏覽器在運行時幫你做了很多優化。大多數的情況，你所做的優化都是在浪費你的時間。這裏有些很好的[資源](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)，去了解哪些優化是無用的。
 
 **糟糕的：**
 ```javascript
-// 在舊的瀏覽器中，每次迭代（iteration）都不會緩存（cache）`list.length`，這將帶給你一些重新計算時的性能損耗。
-// 在較新的瀏覽器中已經被優化了，你不用手動去緩存。
+// 在舊的瀏覽器中並不會快取（cache）`list.length`，每次迭代（iteration）時的重新計算相當損耗效能。
+// 這在新瀏覽器中已被優化，你不用手動去快取。
 for (let i = 0, len = list.length; i < len; i++) {
   // ...
 }
@@ -1028,7 +1028,7 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 
 ## 類別（Classes）
 ### 類別語法偏好使用 ES2015/ES6 的類別更甚於 ES5 函數
-ES5 的類別定義非常難以閱讀、繼承、建造與定義方法。假設你需要繼承（請注意你有可能不需要），偏好使用 ES2015/ES6 的類別語。除非你需要大型且複雜的物件，不然使用小型函數會比類別更好。
+ES5 的類別定義非常難以閱讀、繼承、建造與定義方法。假設你需要繼承（請注意你有可能不需要），偏好使用 ES2015/ES6 的類別。除非你需要大型且複雜的物件，不然使用小型函數會比類別更好。
 
 **糟糕的：**
 ```javascript
@@ -1182,7 +1182,7 @@ const car = new Car('Ford', 'F-150', 'red').setColor('pink').save();
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 偏好組合（composition）更甚於繼承（inheritance）
-正如四人幫的[設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，如果可以，你應該優先使用組合而不是繼承。有許多好理由去使用繼承或是組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。你應該偏好使用組合更甚於繼承。
+正如四人幫的[設計模式](https://en.wikipedia.org/wiki/Design_Patterns)，可以的話你應該優先使用組合而不是繼承。有許多好理由去使用繼承或是組合。重點是，如果你主觀認定是繼承，嘗試想一下組合能否替問題帶來更好的解法。你應該偏好使用組合更甚於繼承。
 
 什麼時候使用繼承？這取決於你手上的問題，不過這有一些不錯的參考，說明什麼什麼時候繼承比組合更好用：
 
@@ -1799,7 +1799,7 @@ async function getCleanCodeArticle() {
 拋出錯誤是一件好事情！代表運行時可以成功辨識程式中的錯誤，通過停止執行目前堆疊（stack）上的執行函數，結束（Node.js 中的）目前程序（process），並在控制台中用一個堆疊追蹤（stack trace）提醒你。
 
 ### 不要忽略捕捉到的錯誤
-當捕捉到一個錯誤時，不做任何處理，不能讓你有修復錯誤或是反應的能力。向控制台（`console.log`）紀錄錯誤也不怎麼好，因為往往會丟失在海量的控制台輸出中。如果你使用 `try/catch`包住，代表著你可能想到這裡可能會出錯，當錯誤發生時會有個處理方法。
+捕捉到一個錯誤時而不做任何處理，會讓你失去修復或是反應錯誤的能力。將錯誤紀錄於控制台（`console.log`）也不怎麼好，因為你往往會迷失在控制台大量的記錄之中。如果你使用 `try/catch` 包住程式碼，代表你預期這裡可能會出錯，因此當錯誤發生時你必須要有個處理方法。
 
 **糟糕的：**
 ```javascript
@@ -1815,18 +1815,18 @@ try {
 try {
   functionThatMightThrow();
 } catch (error) {
-  // 比 console.log 更加顯眼
+  // 可以這樣（會比 console.log 更吵）
   console.error(error);
-  // 另外種方法
+  // 或這種方法
   notifyUserOfError(error);
-  // 另外種方法
+  // 另外一種方法
   reportErrorToService(error);
-  // 或是全部都做
+  // 或是全部都做！
 }
 ```
 
 ### 不要忽略被拒絕的 Promises
-如因如上，不要忽略任何捕捉到的錯誤。
+原因如上節所述，不要忽略任何捕捉到的錯誤。
 
 **糟糕的：**
 ```javascript
@@ -1899,7 +1899,7 @@ class Alpaca {}
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 函數的呼叫者應該與被呼叫者靠近
-如果一個函數調用另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，調用函數應於被調用函數的正上方。我們傾向於從上到下的閱讀方式，就是看報紙一樣。基於這個原因，保持你的程式碼可以依照這種方式閱讀。
+如果一個函數呼叫另外一個，在程式碼中兩個函數的垂直位置應該靠近。理想情況下，呼叫函數應於被呼叫函數的正上方。我們傾向於從上到下的閱讀方式，就像看報紙一樣。基於這個原因，讓你的程式碼可以依照這種方式閱讀。
 
 **糟糕的：**
 ```javascript
@@ -1982,8 +1982,8 @@ review.perfReview();
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 註解（Comments）
-### 只對包含複雜業務邏輯的東西，撰寫註解
-註解是代表的辯解，而不是要求。多數情況下，好的程式碼就是文件。
+### 只對商業邏輯複雜的部分撰寫註解
+註解是代表的辯解，而不是要求。多數情況下，好的程式碼本身就是文件。
 
 **糟糕的：**
 ```javascript
@@ -2026,7 +2026,7 @@ function hashIt(data) {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ### 不要在程式碼中保留被註解掉的程式碼
-因為有版本控制，舊的程式碼流程歷史紀錄中即可。
+有了版本控制，舊的程式碼留在歷史紀錄中就好。
 
 **糟糕的：**
 ```javascript
@@ -2108,7 +2108,7 @@ const actions = function() {
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
 ## 翻譯（Translation）
-以下為可用的語言翻譯。
+以下為所有的翻譯版本。
 
 - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**:
   [GavBaros/clean-code-javascript-fr](https://github.com/GavBaros/clean-code-javascript-fr)
