@@ -102,6 +102,7 @@ saveCityZipCode(city, zipCode);
 ```
 
 **譯者附註**
+
 `address.match(cityZipCodeRegex)` 取出了字串中的 city 與 zipCode 並以陣列（Array）的方式輸出。在糟糕的範例中，你不會知道哪個是 city，哪個是 zipCode。在適當的範例中，則清楚地解釋了。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
@@ -240,17 +241,24 @@ function createMenu({
   body = '',
   buttonText = 'My Button',
   cancellable = true
-} = {}) { // 如未傳遞任何參數使用預設空物件，避免 TypeError: Cannot destructure property `...` of 'undefined' or 'null'.
-  // ...
+} = {}) { // 如未傳遞任何參數使用預設空物件，使用 `= {}` 可避免 TypeError: Cannot destructure property `...` of 'undefined' or 'null'.
+  return {
+    title,
+    body,
+    buttonText,
+    cancellable
+  }
 }
 
-createMenu({
+const myMenu = createMenu({
   title: 'Foo',
   body: 'Bar',
   buttonText: 'Baz',
   cancellable: true
 });
 ```
+
+想了解更多工廠模式與 ES6 的結合，可參考連結文章：[JavaScript Factory Functions with ES6+](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1)。
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
