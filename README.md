@@ -465,7 +465,7 @@ function showEmployeeList(employees) {
 
 **[⬆ 回到目錄](#目錄table-of-contents)**
 
-### 使用 `Object.assign` 設定 `Object` 的預數值
+### 使用 `Object.assign` 設定 `Object` 的預設值
 
 **糟糕的：**
 ```javascript
