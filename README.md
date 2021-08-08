@@ -776,11 +776,11 @@ if (!isDOMNodeNotPresent(node)) {
 **適當的：**
 ```javascript
 function isDOMNodePresent(node) {
-  *// ...*
+  // ...
 }
 
 if (isDOMNodePresent(node)) {
-  *// ...*
+  // ...
 }
 ```
 
