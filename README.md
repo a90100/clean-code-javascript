@@ -154,8 +154,8 @@ const Car = {
   carColor: 'Blue'
 };
 
-function paintCar(car) {
-  car.carColor = 'Red';
+function paintCar(car, color) {
+  car.carColor = color;
 }
 ```
 
@@ -167,8 +167,8 @@ const Car = {
   color: 'Blue'
 };
 
-function paintCar(car) {
-  car.color = 'Red';
+function paintCar(color) {
+  car.color = color;
 }
 ```
 
