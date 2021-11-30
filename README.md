@@ -497,7 +497,7 @@ const menuConfig = {
 };
 
 function createMenu(config) {
-  config = Object.assign(
+  let finalConfig = Object.assign(
     {
       title: 'Foo',
       body: 'Bar',
@@ -506,7 +506,7 @@ function createMenu(config) {
     },
     config
   );
-
+  return finalConfig;
   // config 現在等同於： {title: 'Order', body: 'Bar', buttonText: 'Send', cancellable: true}
   // ...
 }
